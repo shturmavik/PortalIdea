@@ -247,24 +247,35 @@ const MockDB = {
 }
 
 const serverAPI = {
+  getDataIdeas: () => fetch('/ideas'),
   getIdeas: () => fetch('/ideas'),
   getCategories: () => fetch('/categories'),
-  getCategory: (id) => fetch('/categories/' + id),
+  getCategory: (href) => fetch(`/categories/${href}`),
 }
 
 const mockAPI = {
+  getDataIdeas: () => {
+    return new Promise((resolve) =>
+        setTimeout(() => resolve(MockDB), 1000)
+    )
+  },
   getIdeas: () => {
     return new Promise((resolve) =>
       setTimeout(() => resolve(MockDB.ideas), 1000)
     )
   },
   getCategories: () => Promise.resolve(MockDB.categories),
-  getCategory: (id) => {
-    return Promise.resolve(MockDB.categories.find((v) => v.id === id))
+  getCategory: (href) => {
+    return new Promise((resolve) =>
+        setTimeout(() => {
+          const category = MockDB.categories.find((v) => v.href === href.replaceAll('/', ''))
+          let ideas = MockDB.ideas.filter(item  => item.categoryId === category.id)
+          return resolve({ideas, categories: [category]})
+        }), 1000)
   },
 }
 
-const currentAPI = serverAPI
+const currentAPI = mockAPI
 
 Object.assign(currentAPI, mockAPI)
 // Object.assign(currentAPI, serverAPI)

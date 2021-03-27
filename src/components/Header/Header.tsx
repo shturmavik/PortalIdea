@@ -1,5 +1,7 @@
 import React, { Component, useEffect, useState } from 'react'
 import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
+
 // import { AR_HOME_BUTTON } from '../../constants/AR_HOME_BUTTON'
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg'
 import { ReactComponent as Lamp } from '../../assets/icons/lamp.svg'
@@ -27,9 +29,9 @@ const Header = (props) => {
   return (
     <header className='mb-8'>
       <div className='container flex mx-auto'>
-        <div className='flex flex-grow'>
+        <Link to="/" className='flex flex-grow'>
           <Logo alt='Главная' className='w-36' />
-        </div>
+        </Link>
         <figure className='flex mr-10'>
           <Avatar className='mt-11' />
           <div className='px-8 pt-14'>

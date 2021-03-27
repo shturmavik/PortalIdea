@@ -11,8 +11,6 @@ const IdeaDetail = (props) => {
   const { setType } = props
   useEffect(() => {
     setType('detail')
-    console.log(props);
-
   }, [])
 
   return (

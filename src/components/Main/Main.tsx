@@ -5,6 +5,7 @@ import { Route, Switch, withRouter } from 'react-router'
 import { setType, setTitle } from '../../actions/PageActions'
 import { connect } from 'react-redux'
 import IdeaList from '../IdeaList/IdeaList'
+import IdeaCategory from '../IdeaCategory/IdeaCategory'
 import IdeaDetail from '../IdeaDetail/IdeaDetail'
 const Main = (props) => {
 
@@ -25,8 +26,8 @@ const Main = (props) => {
       <main>
         <Switch>
           <Route exact path='/' render={renderIndex} />
-          <Route path='/:category/' render={renderCategory} />
           <Route path='/:category/:detail/' render={renderDetail} />
+          <Route path='/:category/' render={renderCategory} />
         </Switch>
       </main>
     </>
