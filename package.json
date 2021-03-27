@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "name": "react-webpack-5-tailwind-2",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Webpack 5 boilerplate with React 17, Tailwind 2, using babel, sass, with HMR and an optimized production build",
   "dependencies": {
     "axios": "^0.21.1",
