@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -17,12 +17,12 @@ const App = (props) => {
   const [user, setUser] = React.useState('')
   const [page, setPage] = React.useState('')
   // eslint-disable-next-line react/prop-types
-
-  React.useEffect(() => {
+  useEffect(() => {
     setUser(props.user)
     setPage(props.page)
   }, [])
   // @ts-ignore
+
   return (
     <>
       <div className='wrapper'>

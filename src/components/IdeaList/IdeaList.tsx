@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react';
 import './IdeaList.scss'
 import { MockData } from '../../MockData/MockData'
 import { Link } from 'react-router-dom'
@@ -6,6 +6,7 @@ import Tag from '../Tag/Tag'
 import LikeDislike from '../LikeDislike/LikeDislike'
 import CommentCount from '../CommentCount/CommentCount'
 import { ReactComponent as Arrow } from '../../assets/icons/arrow_short-fat.svg'
+import Avatar from '../Avatar/Avatar';
 
 interface TMockData {
   id: number
@@ -40,7 +41,13 @@ interface TMockData {
   }[]
 }
 
-const IdeaList = () => {
+const IdeaList = (props) => {
+  const { setType } = props
+
+  useEffect(() => {
+    setType('index')
+  }, [])
+
   return (
     <>
       {MockData.map((TMockData) => {
@@ -59,12 +66,7 @@ const IdeaList = () => {
                         href='https://bitrix.rdleas.ru/company/personal/user/4692/'
                         className='flex items-center'
                       >
-                        <img
-                          className='rounded-full'
-                          width='26'
-                          height='26'
-                          src={item.author.pic}
-                        />
+                        <Avatar width='26' height='26' src={item.author.pic}/>
                         <div className='font-bold pl-2.5 fs-10'>
                           {item.author.name}
                           <br />

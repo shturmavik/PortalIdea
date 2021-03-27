@@ -16,6 +16,7 @@ module.exports = {
     colors: {
       ...colors,
       'idea-gray': '#c4c4c4',
+      'idea-green': '#008636',
       'idea-indigo': '#B1BFE1',
       'idea-light-indigo': '#BCC1CD',
       'idea-dark-blue': '#223157',
@@ -35,6 +36,7 @@ module.exports = {
     backgroundColor: (theme) => ({
       ...theme('colors'),
       'idea-gray': theme('colors.idea-gray'),
+      'idea-green': theme('colors.idea-green'),
       'idea-dark-blue': theme('colors.idea-dark-blue'),
     }),
     borderColor: (theme) => ({

@@ -1,33 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch, withRouter } from 'react-router'
-// import Home from '../Home/Home'
-// import Admin from '../Admin/Admin'
-// import Genre from '../Genre/Genre'
-// import Appointment from '../Appointment/Appointment'
 
-import { setTitle } from '../../actions/PageActions'
+import { setType, setTitle } from '../../actions/PageActions'
 import { connect } from 'react-redux'
 import IdeaList from '../IdeaList/IdeaList'
 import IdeaDetail from '../IdeaDetail/IdeaDetail'
-const Main = () => {
-  // const { setTitleAction } = this.props
-  // this.renderHome = (props) => (
-  //   <Home setTitle={setTitleAction} {...props} />
-  // )
-  // this.renderAppointment = (props) => (
-  //   <Appointment setTitle={setTitleAction} {...props} />
-  // )
+const Main = (props) => {
+
+  const { setTypeAction, setTitleAction } = props
+
+  const renderIndex = (props: string) => (
+    <IdeaList setType={setTypeAction} {...props} type='index' />
+  )
+
+  const renderDetail = (props: string) => (
+    <IdeaDetail setType={setTypeAction} {...props} type='detail' />
+  )
 
   return (
     <>
       <main>
-          {/*<IdeaList />*/}
         <Switch>
-          <Route exact path='/' component={IdeaList} />
-          <Route path='/:category/:detail' component={IdeaDetail} />
-          {/*<Route path='/genre' component={Genre} />*/}
-          {/*<Route path='/appointment' component={Appointment} />*/}
+          <Route exact path='/' render={renderIndex} />
+          <Route path='/:category/:detail' render={renderDetail} />
         </Switch>
       </main>
     </>
@@ -36,7 +32,8 @@ const Main = () => {
 
 // eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch) => ({
-  setTitleAction: (title) => dispatch(setTitle(title)),
+  setTitleAction: (title: string) => dispatch(setTitle(title)),
+  setTypeAction: (type: string) => dispatch(setType(type)),
 })
 
 // в наш компонент App, с помощью connect(mapStateToProps)

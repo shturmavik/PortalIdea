@@ -1,0 +1,23 @@
+.idea-detail {
+  &-back {
+
+    &:before {
+      @apply bg-idea-green;
+      mask: url('../../assets/icons/arrow_short-fat.svg') no-repeat 50% 50%;
+      display: inline-block;
+      content: "";
+      width: 12px;
+      height: 12px;
+      transition: transform .5s;
+      transform: translateX(-7px) rotate(.5turn);
+      mask-size: cover;
+    }
+
+    &:hover {
+      &:before {
+        transform: translateX(0) rotate(.5turn);
+      }
+    }
+
+  }
+}

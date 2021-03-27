@@ -13,7 +13,7 @@ export const MockData = [
         href: '/oformlenie-sdelok/4-glaza/',
         category: 'Оформление сделок',
         author: {
-          pic: '/images/Foto-Barashin-2.jpg',
+          pic: '',
           name: 'Олег',
           surname: 'Барашин',
         },
