@@ -9,7 +9,7 @@ const autoprefixer = require('autoprefixer') // help tailwindcss to work
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [paths.src + '/index.js'],
+  entry: [paths.src + '/index.tsx'],
 
   // Where webpack outputs the assets and bundles
   output: {
@@ -55,7 +55,11 @@ module.exports = {
   module: {
     rules: [
       // JavaScript: Use Babel to transpile JavaScript files
-      { test: /\.(js|jsx)$/, exclude: /node_modules/, use: ['babel-loader'] },
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
 
       // Styles: Inject CSS into the head with source maps
       {
@@ -63,7 +67,6 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader',
           {
             loader: 'postcss-loader', // postcss loader needed for tailwindcss
             options: {
@@ -73,19 +76,25 @@ module.exports = {
               },
             },
           },
+          'sass-loader',
         ],
       },
-
-      {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      },
-
+      // {
+      //   test: /\.svg$/,
+      //   use: ['@svgr/webpack'],
+      // },
+        {
+            test: /\.svg$/,
+            use: ['@svgr/webpack', 'url-loader'],
+        },
       // Images: Copy image files to build folder
       { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
 
       // Fonts and SVGs: Inline files
       { test: /\.(woff(2)?|eot|ttf|otf|)$/, type: 'asset/inline' },
     ],
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 }

@@ -1,0 +1,10 @@
+[type=search] {
+  background: {
+    image: url('../../assets/icons/search.svg');
+    repeat: no-repeat;
+    position: right 30px center;
+  }
+  &::placeholder {
+    @apply text-idea-indigo font-bold text-base;
+  }
+}

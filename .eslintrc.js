@@ -41,5 +41,10 @@ module.exports = {
       version: "detect",
       flowVersion: "0.63.1",
     },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   },
 };

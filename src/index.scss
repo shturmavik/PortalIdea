@@ -1,3 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'assets/scss/fonts';
+
+.body {
+  font-size: 1rem;
+  font-family: 'SB Sans Display', sans-serif;
+  color: #080F22;
+}
+.theme_aqua {
+  background: linear-gradient(180deg, #37E6BC 0%, #BBF7E8 100%);
+  box-shadow: 5px 10px 24px rgba(55, 230, 188, 0.4);
+}
+
+.font-montserat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+$grid-breakpoints: (
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+);
+$container-max-widths: (
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+);
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+@function px-to-rem($size) {
+  @if (unitless($size)) {
+    $size: $size * 1px;
+  }
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+$font-size: 8;
+@while $font-size <= 35 {
+  .fs-#{$font-size}, .fs#{$font-size} {
+    font-size: px-to-rem($font-size) !important;
+  }
+  @if $font-size < 32 {
+    $font-size: $font-size + 1;
+  } @else {
+    $font-size: $font-size + 2;
+  }
+}
+@each $breakpoint in map-keys($container-max-widths) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $font-size: 8;
+    @while $font-size <= 35 {
+      .fs#{$infix}-#{$font-size} {
+        font-size: px-to-rem($font-size) !important;
+      }
+      @if $font-size < 32 {
+        $font-size: $font-size + 1;
+      } @else {
+        $font-size: $font-size + 2;
+      }
+    }
+  }
+}

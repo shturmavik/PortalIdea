@@ -1,0 +1,20 @@
+.main-tiles {
+  .main-tile {
+    &:hover {
+      background-color: rgba(109, 109, 109, 0.1);
+    }
+
+    border: 2px solid #039BE5;
+
+    &__icon {
+      width: 90px;
+      height: 90px;
+      fill: #039BE5;
+    }
+
+    &__title {
+      color: #039BE5;
+      bottom: 10px;
+    }
+  }
+}
