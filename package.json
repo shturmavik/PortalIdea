@@ -34,7 +34,7 @@
     "lint-fix": "eslint src --ext .js,.jsx --fix && yarn prettify",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "version": "git push --follow-tags"
+    "postversion": "git push --follow-tags"
   },
   "husky": {
     "hooks": {
