@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import './IdeaDetail.scss'
-import { MockData } from '../../MockData/MockData'
 import { Link } from 'react-router-dom'
 import Tag from '../Tag/Tag'
 import { ReactComponent as Arrow } from '../../assets/icons/arrow_short-fat.svg'
@@ -10,10 +9,10 @@ import Avatar from '../Avatar/Avatar'
 
 const IdeaDetail = (props) => {
   const { setType } = props
-
   useEffect(() => {
     setType('detail')
-    const axios = axios.get()
+    console.log(props);
+
   }, [])
 
   return (

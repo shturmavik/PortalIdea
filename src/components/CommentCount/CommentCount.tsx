@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import './CommentCount.scss'
 import { ReactComponent as Message } from '../../assets/icons/message.svg'
-import { MockData } from '../../MockData/MockData'
 
 type Props = {
   count: number

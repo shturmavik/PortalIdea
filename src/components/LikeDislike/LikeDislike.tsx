@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import './LikeDislike.scss'
 import { ReactComponent as Like } from '../../assets/icons/like.svg'
 import { ReactComponent as Dislike } from '../../assets/icons/dislike.svg'
-import { MockData } from '../../MockData/MockData'
 
 type Props = {
   like: number,

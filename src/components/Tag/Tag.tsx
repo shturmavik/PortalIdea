@@ -1,6 +1,5 @@
 import React, {FunctionComponent} from 'react';
 import './Tag.scss';
-import {MockData} from '../../MockData/MockData';
 
 type arProps = {
     name: string

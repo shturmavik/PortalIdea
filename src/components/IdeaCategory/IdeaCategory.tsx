@@ -48,7 +48,7 @@ interface IMockCategories {
 const getIdeas = () => currentAPI.getIdeas()
 const getCategories = () => currentAPI.getCategories()
 
-const IdeaList = (props) => {
+const IdeaCategory = (props) => {
   const { setType } = props
   const [ideas, setIdeas] = useState([])
   const [categories, setCategories] = useState([])
@@ -133,4 +133,4 @@ const IdeaList = (props) => {
   )
 }
 
-export default IdeaList
+export default IdeaCategory

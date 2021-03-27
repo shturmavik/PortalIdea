@@ -13,7 +13,9 @@ const Main = (props) => {
   const renderIndex = (props: string) => (
     <IdeaList setType={setTypeAction} {...props} type='index' />
   )
-
+  const renderCategory = (props: string) => (
+      <IdeaCategory setType={setTypeAction} {...props} type='category' />
+  )
   const renderDetail = (props: string) => (
     <IdeaDetail setType={setTypeAction} {...props} type='detail' />
   )
@@ -23,7 +25,8 @@ const Main = (props) => {
       <main>
         <Switch>
           <Route exact path='/' render={renderIndex} />
-          <Route path='/:category/:detail' render={renderDetail} />
+          <Route path='/:category/' render={renderCategory} />
+          <Route path='/:category/:detail/' render={renderDetail} />
         </Switch>
       </main>
     </>
